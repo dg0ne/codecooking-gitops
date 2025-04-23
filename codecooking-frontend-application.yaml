@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/chadol75/codecooking-gitops.git
+    repoURL: https://github.com/dg0ne/codecooking-gitops.git
     targetRevision: HEAD
-    path: frontend
+    path: app/frontend  # 이 부분을 frontend에서 app/frontend로 변경
   destination:
     server: https://kubernetes.default.svc
     namespace: codecooking
