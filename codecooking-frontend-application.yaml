@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/dg0ne/codecooking-gitops.git
     targetRevision: HEAD
-    path: app/frontend  # 이 부분을 frontend에서 app/frontend로 변경.
+    path: app/frontend  # 이 부분을 frontend에서 app/frontend로 변경
   destination:
     server: https://kubernetes.default.svc
     namespace: codecooking
@@ -18,3 +18,8 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=false
+  ignoreDifferences:
+  - group: apps
+    kind: Deployment
+    jsonPointers:
+    - /spec/template/spec/containers/0/image
