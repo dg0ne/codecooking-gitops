@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: codecooking-frontend
+  namespace: codecooking
+  labels:
+    app: codecooking-frontend
+    app.kubernetes.io/part-of: codecooking
+  annotations:
+    # kubernetes.io/ingress.class: "nginx"  # 이 주석 대신 아래 spec에 ingressClassName 사용
+spec:
+  ingressClassName: nginx  # 또는 kubectl get ingressclass로 확인한 이름
+  rules:
+  - host: codecooking.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: codecooking-frontend
+            port:
+              number: 80
