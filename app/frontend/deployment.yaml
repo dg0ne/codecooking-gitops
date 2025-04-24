@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: codecooking-frontend
-        image: acrdigitalgarage01.azurecr.io/codecooking-frontend:42
+        image: acrdigitalgarage01.azurecr.io/codecooking-frontend:43
         imagePullPolicy: Always
         ports:
         - containerPort: 80
