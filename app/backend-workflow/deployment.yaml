@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codecooking-workflow
+  namespace: codecooking
+  labels:
+    app: codecooking-workflow
+    app.kubernetes.io/part-of: codecooking
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: codecooking-workflow
+  template:
+    metadata:
+      labels:
+        app: codecooking-workflow
+    spec:
+      containers:
+      - name: codecooking-workflow
+        image: acrdigitalgarage01.azurecr.io/codecooking-workflow:20
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5
