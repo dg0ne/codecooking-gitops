@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: codecooking-backend-ingress
+  namespace: codecooking
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: codecooking-backend.20.214.196.128.nip.io
+    http:
+      paths:
+      - path: /workflow/(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: codecooking-workflow
+            port:
+              number: 8080
+      - path: /cicdflow/(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: codecooking-cicdflow
+            port:
+              number: 8080

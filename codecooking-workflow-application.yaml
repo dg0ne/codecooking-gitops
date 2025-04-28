@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: codecooking-workflow
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/dg0ne/codecooking-gitops.git
+    targetRevision: HEAD
+    path: app/backend-workflow  # backend-workflow 디렉토리에 있는 매니페스트 파일 사용
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: codecooking
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=false  # codecooking 네임스페이스는 이미 존재함

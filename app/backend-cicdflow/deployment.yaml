@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: codecooking-workflow
+  name: codecooking-cicdflow
   namespace: codecooking
   labels:
-    app: codecooking-workflow
+    app: codecooking-cicdflow
     app.kubernetes.io/part-of: codecooking
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: codecooking-workflow
+      app: codecooking-cicdflow
   template:
     metadata:
       labels:
-        app: codecooking-workflow
+        app: codecooking-cicdflow
     spec:
       containers:
-      - name: codecooking-workflow
-        image: acrdigitalgarage01.azurecr.io/codecooking-workflow:latest
+      - name: codecooking-cicdflow
+        image: acrdigitalgarage01.azurecr.io/codecooking-cicdflow:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -46,4 +46,3 @@ spec:
           value: "prod"
         - name: SPRING_JPA_HIBERNATE_DDL_AUTO
           value: "validate"
-        # 여기에 필요한 환경 변수 추가
