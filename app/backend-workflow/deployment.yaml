@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: codecooking-workflow
-        image: acrdigitalgarage01.azurecr.io/codecooking-workflow:20
+        image: acrdigitalgarage01.azurecr.io/codecooking-workflow:21
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
