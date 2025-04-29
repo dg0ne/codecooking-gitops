@@ -28,3 +28,10 @@ spec:
             name: codecooking-cicdflow
             port:
               number: 8080
+      - path: /mcp/(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: codecooking-cicdflow
+            port:
+              number: 8080
