@@ -20,9 +20,9 @@ spec:
       - name: codecooking-backend-mcp
         image: acrdigitalgarage01.azurecr.io/codecooking-mcp:latest
         imagePullPolicy: Always
-        # 셸 스크립트를 사용하여 디렉토리 내용을 확인하고 Python 애플리케이션 실행
+        # 정확한 경로로 main.py 실행
         command: ["/bin/sh"]
-        args: ["-c", "ls -la /app && python /app/main.py || echo '메인 파일을 찾을 수 없습니다. 디렉토리 구조:' && find / -name '*.py' | head -n 20"]
+        args: ["-c", "cd /app && python app/main.py"]
         ports:
         - containerPort: 5000
         resources:
@@ -32,16 +32,16 @@ spec:
           limits:
             cpu: "500m"
             memory: "512Mi"
-        # 프로브 임시 비활성화
-        # livenessProbe:
-        #   httpGet:
-        #     path: /health
-        #     port: 5000
-        #   initialDelaySeconds: 30
-        #   periodSeconds: 10
-        # readinessProbe:
-        #   httpGet:
-        #     path: /health
-        #     port: 5000
-        #   initialDelaySeconds: 5
-        #   periodSeconds: 5
+         애플리케이션이 안정적으로 실행되면 프로브 다시 활성화
+         livenessProbe:
+           httpGet:
+             path: /health
+             port: 5000
+           initialDelaySeconds: 30
+           periodSeconds: 10
+         readinessProbe:
+           httpGet:
+             path: /health
+             port: 5000
+           initialDelaySeconds: 5
+           periodSeconds: 5
