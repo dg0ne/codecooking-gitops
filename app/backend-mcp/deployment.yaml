@@ -7,7 +7,7 @@ metadata:
     app: codecooking-backend-mcp
     app.kubernetes.io/part-of: codecooking
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: codecooking-backend-mcp
@@ -24,8 +24,6 @@ spec:
         - "/bin/sh"
         - "-c"
         - "cd /app && python -m app.main"
-        # secretRef를 사용하지 않고, 환경 변수만 참조합니다.
-        # Secret은 클러스터에 직접 생성합니다.
         env:
         - name: ANTHROPIC_API_KEY
           valueFrom:
