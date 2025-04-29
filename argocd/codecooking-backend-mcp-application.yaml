@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: codecooking-backend-mcp
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/dg0ne/codecooking-gitops.git
+    targetRevision: HEAD
+    path: app/backend-mcp
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: codecooking
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=false

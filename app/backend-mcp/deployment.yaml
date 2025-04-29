@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codecooking-backend-mcp
+  namespace: codecooking
+  labels:
+    app: codecooking-backend-mcp
+    app.kubernetes.io/part-of: codecooking
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: codecooking-backend-mcp
+  template:
+    metadata:
+      labels:
+        app: codecooking-backend-mcp
+    spec:
+      containers:
+      - name: codecooking-backend-mcp
+        image: acrdigitalgarage01.azurecr.io/codecooking-mcp:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+          value: validate
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 15
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 3
