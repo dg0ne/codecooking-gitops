@@ -18,11 +18,7 @@ spec:
     spec:
       containers:
       - name: codecooking-backend-mcp
-<<<<<<< Updated upstream
-        image: acrdigitalgarage01.azurecr.io/codecooking-mcp:5
-=======
         image: acrdigitalgarage01.azurecr.io/codecooking-mcp:latest
->>>>>>> Stashed changes
         imagePullPolicy: Always
         # 셸 스크립트를 사용하여 디렉토리 내용을 확인하고 Python 애플리케이션 실행
         command: ["/bin/sh"]
