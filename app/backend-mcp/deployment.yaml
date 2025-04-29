@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: codecooking-backend-mcp
-        image: acrdigitalgarage01.azurecr.io/codecooking-mcp:latest
+        image: acrdigitalgarage01.azurecr.io/codecooking-mcp:6
         imagePullPolicy: Always
         # 정확한 경로로 main.py 실행
         command: ["/bin/sh"]
