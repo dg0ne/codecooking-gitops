@@ -23,7 +23,7 @@ spec:
         command:
         - "/bin/sh"
         - "-c"
-        - "cd /app && python app/main.py"
+        - "cd /app && python -m app.main"
         ports:
         - containerPort: 5000
         resources:
