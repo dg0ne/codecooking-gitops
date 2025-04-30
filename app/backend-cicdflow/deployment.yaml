@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: codecooking-cicdflow
-        image: acrdigitalgarage01.azurecr.io/codecooking-cicdflow:13
+        image: acrdigitalgarage01.azurecr.io/codecooking-cicdflow:14
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
