@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: codecooking-backend-mcp
-        image: acrdigitalgarage01.azurecr.io/codecooking-mcp:9
+        image: acrdigitalgarage01.azurecr.io/codecooking-mcp:10
         imagePullPolicy: Always
         command:
         - "/bin/sh"
