@@ -45,7 +45,7 @@ spec:
         - secretRef:
             name: codecooking-eslint-secret
         - secretRef:
-            name: codecooking-fragementor-secret
+            name: codecooking-fragmentor-secret
         - secretRef:
             name: codecooking-cicdworkflow-api-secret
         - secretRef:
