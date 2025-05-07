@@ -46,3 +46,6 @@ spec:
           value: "prod"
         - name: SPRING_JPA_HIBERNATE_DDL_AUTO
           value: "validate"
+        envFrom:
+        - secretRef:
+            name: codecooking-cicdflow-secret
