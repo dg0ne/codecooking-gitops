@@ -38,22 +38,16 @@ spec:
         envFrom:
         - secretRef:
             name: azure-servicebus-secret
-        envFrom:
         - secretRef:
             name: codecooking-llm-secret
-        envFrom:
         - secretRef:
             name: codecooking-token-secret
-        envFrom:
         - secretRef:
             name: codecooking-eslint-secret
-        envFrom:
         - secretRef:
             name: codecooking-fragementor-secret
-        envFrom:
         - secretRef:
             name: codecooking-cicdworkflow-api-secret
-        envFrom:
         - secretRef:
             name: codecooking-server-setting-secret
         ports:
